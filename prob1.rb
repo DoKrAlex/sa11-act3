@@ -1,8 +1,9 @@
-def parse_log_entry(log)
-  pattern = /^(INFO|WARN|ERROR): (.+)$/
-  match = log.match(pattern)
-  [match[1], match[2]] if match
+def extract_urls(text)
+  urls = text.scan(/(?:https?|ftp):\/\/[\S]+/i)
+  puts urls
 end
 
-log_entry = "ERROR: Disk space low"
-puts parse_log_entry(log_entry).inspect
+sample_text = "Visit our site at http://www.example.org for more information. Check out our search page at https://example.com/search?q=ruby+regex.
+                Don’t forget to ftp our resources at ftp://example.com/resources."
+
+extract_urls(sample_text)
